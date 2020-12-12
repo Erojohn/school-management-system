@@ -87,8 +87,6 @@ void addStudent(int counter);
 void addTeacher(int tCounter);
 void editStudent(int counter);
 void editTeacher(int tCounter);
-void removeStudent(int counter);
-void removeTeacher(int tCounter);
 void searchStudent(int counter);
 void searchTeacher(int tCounter);
 void quit();
@@ -139,12 +137,10 @@ int main() {
 	cout << "[0]QUIT\n";
 	cout << "[1]ADD STUDENT\n";
 	cout << "[2]ADD TEACHER\n";
-	cout << "[3]REMOVE STUDENT\n";
-	cout << "[4]REMOVE TEACHER\n";
-	cout << "[5]EDIT STUDENT\n";
-	cout << "[6]EDIT TEACHER\n";
-	cout << "[7]VIEW STUDENT\n";
-	cout << "[8]VIEW TEACHER\n\n";
+	cout << "[3]EDIT STUDENT\n";
+	cout << "[4]EDIT TEACHER\n";
+	cout << "[5]VIEW STUDENT\n";
+	cout << "[6]VIEW TEACHER\n\n";
 	
 	cout << "ENTER CHOICE: ";
 	cin >> choice;
@@ -159,21 +155,15 @@ int main() {
 		addTeacher(tCounter);
 	}
 	else if(choice == "3"){
-		removeStudent(counter);
-	}
-	else if(choice == "4"){
-		removeTeacher(tCounter);
-	}
-	else if(choice == "5"){
 		editStudent(counter);
 	}
-	else if(choice == "6"){
+	else if(choice == "4"){
 		editTeacher(tCounter);
 	}
-	else if(choice == "7"){
+	else if(choice == "5"){
 		searchStudent(counter);
 	}
-	else if(choice == "8"){
+	else if(choice == "6"){
 		searchTeacher(tCounter);
 	}
 	else{
@@ -224,7 +214,6 @@ void addStudent(int counter){
 		main();
 	}
 }
-
 void addTeacher(int tCounter){
 	string tName;
 	string tSubj;
@@ -260,98 +249,8 @@ void addTeacher(int tCounter){
 	}
 	
 }
-void removeStudent(int counter){
-	system("CLS");
-	string serialCode;
-	int pick;
-	cin.ignore();
-	cout << "REMOVE STUDENT\n\n";
-	if(counter == 0){
-		cout << "THERE IS NO INFORMATION TO DELETE\n\nPress any key to continue. . .";
-		_getch();
-		main();
-	}
-	cout << "Enter SR - Code: ";
-	getline(cin, serialCode);
-	for(int i = 0; i < counter; i++){
-		if(student[i].getSrCode() == serialCode){
-			cout << "STUDENT FOUND!!\n\n";
-			cout << "Do you want to delete?\n[1] YES\n[2] NO\n\n";
-			cin >> pick;
-			if(pick == 1){
-				student[i].setSrCode("");
-				student[i].setStName("");
-				student[i].setYrLvl("");
-				student[i].setCorSection("");
-				student[i].setStAddress("");
-				student[i].setConNum("");
-				for(int a = i; a < counter; a++){
-					student[a] = student[a + 1];
-				}
-				student[499].setSrCode("");
-				student[499].setStName("");
-				student[499].setYrLvl("");
-				student[499].setCorSection("");
-				student[499].setStAddress("");
-				student[499].setConNum("");
-				decrement(counter);
-				cout << "STUDENT DELETED SUCCESSULLY\n\nPress any key to comtinue. . .";
-				_getch();
-				main();
-			}
-			else{
-				main();
-			}
-		}
-	}
-	cout << "\nSTUDENT NOT FOUND!\n\nPress any key to continue. . .";
-	_getch();
-	main();
-}
-void removeTeacher(int tCounter){
-	system("CLS");
-	cin.ignore();
-	string removeGuro;
-	int picks;
-	cout << "REMOVE TEEACHER\n\n";
-	if(tCounter == 0){
-		cout << "THERE IS NO INFORMATION TO DELETE!!\n\nPress any key to continue. . .";
-		_getch();
-		main();
-	}
-	cout << "Enter full name: ";
-	getline(cin, removeGuro);
-	for(int k = 0; k < counter; k++){
-		if(guro[k].getGuroName() == removeGuro){
-			cout << "TEACHER FOUND!!\n\n";
-			cout << "Do you want to delete?\n[1] YES\n[2] NO\n\n";
-			cin >> picks;
-			if(picks == 1){
-				guro[k].setGuroName("");
-				guro[k].setGuroSubj("");
-				guro[k].setGuroLoc("");
-				guro[k].setGuroContact("");
-				for(int m = k; m < counter; m++){
-					student[m] = student[m + 1];
-				}
-				guro[19].setGuroName("");
-				guro[19].setGuroSubj("");
-				guro[19].setGuroLoc("");
-				guro[19].setGuroContact("");
-				tDecrement(tCounter);
-				cout << "TEACHER DELETED SUCCESSULLY\n\nPress any key to comtinue. . .";
-				_getch();
-				main();
-			}
-			else{
-				main();
-			}
-		}
-	}
-	cout << "\nTEAHCER NOT FOUND!\n\nPress any key to continue. . .";
-	_getch();
-	main();
-}
+
+
 void editStudent(int counter){
 	system("CLS");
 	cin.ignore();
@@ -541,7 +440,6 @@ void quit(){
 	
 	main();
 }
-
 
 
 
